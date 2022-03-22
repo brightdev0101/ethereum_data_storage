@@ -28,14 +28,18 @@ const Car = ethAirBalloonsProvider.createSchema({
         ]
     });
 
+app.get('/', (req, res) => {
+  res.send('EthairBalloons CRUD API!')
+})
+
 app.get('/deploy', (req, res) => {
     Car.deploy(function (err, success) {
         if (!err) {
             res.send("Contract deployed successfully!")
         } else {
             res.send("Contract deployment error" + err)
-        }
-    })
+    }
+  })
 })
 
 app.post('/create', (req,res) => {
@@ -46,7 +50,7 @@ app.post('/create', (req,res) => {
         } else {
             res.send(err)
         }
-    });
+});
 })
 
 app.patch('/update/:id', (req,res) => {
@@ -57,7 +61,7 @@ app.patch('/update/:id', (req,res) => {
         } else {
             res.send(err)
         }
-    });
+});
 })
 
 app.get('/find', (req,res) => {
@@ -67,7 +71,7 @@ app.get('/find', (req,res) => {
         } else {
             res.send(err)
         }
-    });
+});
 })
 
 app.get('/find/:id', (req,res) => {
@@ -77,7 +81,7 @@ app.get('/find/:id', (req,res) => {
         } else {
             res.send(err)
         }
-    });
+});
 })
 
 app.delete('/delete/:id', (req,res) => {
@@ -87,5 +91,10 @@ app.delete('/delete/:id', (req,res) => {
         } else {
             res.send(err)
         }
-    });
+});
+})
+
+
+app.listen(port, () => {
+  console.log(`EthairBalloons API listening at http://localhost:${port}`)
 })
